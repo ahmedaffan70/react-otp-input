@@ -1,6 +1,6 @@
 import React, { Component, ReactDOM } from 'react';
 import Button from 'react-bootstrap/Button';
-class Main extends React.Component {
+class Otpinput extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class Main extends React.Component {
     event.preventDefault();
   }
 
-  toUnicode = (elmnt, content) => {
+  inputfocus = (elmnt) => {
     if (elmnt.key === "Delete" || elmnt.key === "Backspace") {
       const next = elmnt.target.tabIndex - 2;
       if (next > -1) {
@@ -32,12 +32,11 @@ class Main extends React.Component {
     }
     else {
       console.log("next");
-      if (content.length == elmnt.target.maxLength) {
+     
         const next = elmnt.target.tabIndex;
         if (next < 5) {
           elmnt.target.form.elements[next].focus()
         }
-      }
     }
 
   }
@@ -55,7 +54,7 @@ class Main extends React.Component {
             value={this.state.otp1}
             onKeyPress={this.keyPressed}
             onChange={e => this.handleChange("otp1", e)}
-            tabIndex="1" maxLength="1" onKeyUp={e => this.toUnicode(e, e.target.value)}
+            tabIndex="1" maxLength="1" onKeyUp={e => this.inputfocus(e)}
 
           />
           <input
@@ -65,7 +64,7 @@ class Main extends React.Component {
             className="otpInput"
             value={this.state.otp2}
             onChange={e => this.handleChange("otp2", e)}
-            tabIndex="2" maxLength="1" onKeyUp={e => this.toUnicode(e, e.target.value)}
+            tabIndex="2" maxLength="1" onKeyUp={e => this.inputfocus(e)}
 
           />
           <input
@@ -75,7 +74,7 @@ class Main extends React.Component {
             className="otpInput"
             value={this.state.otp3}
             onChange={e => this.handleChange("otp3", e)}
-            tabIndex="3" maxLength="1" onKeyUp={e => this.toUnicode(e, e.target.value)}
+            tabIndex="3" maxLength="1" onKeyUp={e => this.inputfocus(e)}
 
           />
           <input
@@ -85,7 +84,7 @@ class Main extends React.Component {
             className="otpInput"
             value={this.state.otp4}
             onChange={e => this.handleChange("otp4", e)}
-            tabIndex="4" maxLength="1" onKeyUp={e => this.toUnicode(e, e.target.value)}
+            tabIndex="4" maxLength="1" onKeyUp={e => this.inputfocus(e)}
           />
 
           <input
@@ -95,7 +94,7 @@ class Main extends React.Component {
             className="otpInput"
             value={this.state.otp5}
             onChange={e => this.handleChange("otp5", e)}
-            tabIndex="5" maxLength="1" onKeyUp={e => this.toUnicode(e, e.target.value)}
+            tabIndex="5" maxLength="1" onKeyUp={e => this.inputfocus(e)}
           />
         </div>
         <Button className="primary" type="submit">
@@ -107,4 +106,4 @@ class Main extends React.Component {
 }
 
 
-export default Main;
+export default Otpinput;
